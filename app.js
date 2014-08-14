@@ -7,11 +7,7 @@ angular.module('app', [])
 
     .directive('pagination', PaginationDirective)
     .directive('paginationLink', PaginationLinkDirective)
-
-    .directive('pages', PagesDirective)
-    .directive('pageStart', PageDirective('templates/start.html'))
-    .directive('pageAbout', PageDirective('templates/about.html'))
-    .directive('pageContact', PageDirective('templates/contact.html'))
+    .directive('page', PageDirective)
 
     .controller('PageController', ['$location', PageController])
 ;
@@ -19,27 +15,6 @@ angular.module('app', [])
 
 function AppConfig($locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
-};
-
-
-function PagesDirective() {
-    return {
-        template: '<div ng-transclude></div>',
-        controller: 'PageController',
-        controllerAs: 'page',
-        replace: true,
-        transclude: true
-    };
-};
-
-
-function PageDirective(templateUrl) {
-    return function() {
-        return {
-            templateUrl: templateUrl,
-            replace: true,
-        };
-    };
 };
 
 
@@ -58,6 +33,17 @@ function PaginationLinkDirective() {
         scope: {path: '@path'},
         replace: true,
         transclude: true
+    };
+};
+
+
+function PageDirective() {
+    return {
+        template: '<div ng-show="page.is(path)" ng-include="template"></div>',
+        scope: {path: '@path', template: '@template'},
+        controller: 'PageController',
+        controllerAs: 'page',
+        replace: true
     };
 };
 

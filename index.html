@@ -27,11 +27,9 @@
             <pagination-link path="/contact">Contact</pagination-link>
         </pagination>
 
-        <pages>
-            <page-start ng-show="page.is('/')" /></page-start>
-            <page-about ng-show="page.is('/about')" /></page-about>
-            <page-contact ng-show="page.is('/contact')" /></page-contact>
-        </pages>
+        <page path="/" template="templates/start.html"></page>
+        <page path="/about" template="templates/about.html"></page>
+        <page path="/contact" template="templates/contact.html"></page>
 
     </div>
 

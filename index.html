@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+
+    <meta charset="UTF-8">
+    <title>App</title>
+
+    <link rel="stylesheet" href="libs/bootstrap-3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="app.css">
+
+    <script src="libs/jquery-1.11.1.min.js"></script>
+    <script src="libs/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script src="libs/angular.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>My App</h1>
+
+        <pagination>
+            <pagination-link path="#/"></pagination-link>
+            <pagination-link path="#/about"></pagination-link>
+            <pagination-link path="#/contact"></pagination-link>
+        </pagination>
+
+        <pages>
+            <page-start ng-show="page.is('/')" /></page-start>
+            <page-about ng-show="page.is('/about')" /></page-about>
+            <page-contact ng-show="page.is('/contact')" /></page-contact>
+        </pages>
+
+    </div>
+
+</body>
+</html>

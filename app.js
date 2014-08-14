@@ -3,7 +3,7 @@
 
 angular.module('app', [])
 
-    // .config(['$locationProvider', AppConfig])
+    .config(['$locationProvider', AppConfig])
 
     .directive('pagination', PaginationDirective)
     .directive('paginationLink', PaginationLinkDirective)
@@ -37,7 +37,7 @@ function PageDirective(templateUrl) {
     return function() {
         return {
             templateUrl: templateUrl,
-            replace: true
+            replace: true,
         };
     };
 };
@@ -54,9 +54,10 @@ function PaginationDirective() {
 
 function PaginationLinkDirective() {
     return {
-        template: '<li><a href="{{path}}">Start</a></li>',
+        template: '<li><a href="{{path}}" ng-transclude></a></li>',
         scope: {path: '@path'},
-        replace: true
+        replace: true,
+        transclude: true
     };
 };
 
